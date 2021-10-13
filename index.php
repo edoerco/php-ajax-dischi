@@ -18,14 +18,15 @@
     <div id="root" class="wrapper">
         <header>
             <img src="./img/spotify-icon.png" alt="spotify">
-            <select name="" id="">
+            <select name="" id="" v-model="selectedGenre" @change="getFilterdList">
                 <option value="">Tutti i generi</option>
+                <option v-for="(genre, index) in genres" :key="index" >{{genre}}</option>
             </select>
         </header>
 
         <main>
             <div class="container">
-                <div class="album" v-for="(disc, index) in discs" :key="index">
+                <div class="album" v-for="(disc, index) in filteredList" :key="index">
                     <img :src="disc.poster" :alt="disc.title">
                     <h3>{{disc.title}}</h3>
                     <div class="disco-info">
